@@ -17,11 +17,4 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.8.1" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="mavidiSmile.Presentation\Controllers\" />
-    <Folder Include="mavidiSmile.Presentation\Filters\" />
-    <Folder Include="mavidiSmile.Presentation\wwwroot\" />
-    <Folder Include="mavidiSmile.Presentation\ViewModels\" />
-  </ItemGroup>
-
 </Project>

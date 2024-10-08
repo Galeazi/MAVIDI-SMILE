@@ -9,5 +9,6 @@ namespace MAVIDI_SMILE.mavidiSmile.Domais.Repositories
         Task AddAsync(Cliente cliente);
         Task UpdateAsync(Cliente cliente);
         Task DeleteAsync(Guid id);
+        Task DeleteAsync(Cliente cliente);
     }
 }

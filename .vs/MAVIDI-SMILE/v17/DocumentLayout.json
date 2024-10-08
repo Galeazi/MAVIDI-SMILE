@@ -1,0 +1,53 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\mateu\\OneDrive\\\u00C1rea de Trabalho\\Faculdade\\Materias\\3\u00B0Sem\u00EAstre\\Chalenge\\.DotNET\\MAVIDI-SMILE\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{EB9B7C74-5DB2-4992-A806-E58B87218520}|MAVIDI-SMILE\\MAVIDI-SMILE.csproj|c:\\users\\mateu\\onedrive\\\u00E1rea de trabalho\\faculdade\\materias\\3\u00B0sem\u00EAstre\\chalenge\\.dotnet\\mavidi-smile\\mavidi-smile\\controllers\\clientecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EB9B7C74-5DB2-4992-A806-E58B87218520}|MAVIDI-SMILE\\MAVIDI-SMILE.csproj|solutionrelative:mavidi-smile\\controllers\\clientecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EB9B7C74-5DB2-4992-A806-E58B87218520}|MAVIDI-SMILE\\MAVIDI-SMILE.csproj|c:\\users\\mateu\\onedrive\\\u00E1rea de trabalho\\faculdade\\materias\\3\u00B0sem\u00EAstre\\chalenge\\.dotnet\\mavidi-smile\\mavidi-smile\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EB9B7C74-5DB2-4992-A806-E58B87218520}|MAVIDI-SMILE\\MAVIDI-SMILE.csproj|solutionrelative:mavidi-smile\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ClienteController.cs",
+              "DocumentMoniker": "C:\\Users\\mateu\\OneDrive\\\u00C1rea de Trabalho\\Faculdade\\Materias\\3\u00B0Sem\u00EAstre\\Chalenge\\.DotNET\\MAVIDI-SMILE\\MAVIDI-SMILE\\Controllers\\ClienteController.cs",
+              "RelativeDocumentMoniker": "MAVIDI-SMILE\\Controllers\\ClienteController.cs",
+              "ToolTip": "C:\\Users\\mateu\\OneDrive\\\u00C1rea de Trabalho\\Faculdade\\Materias\\3\u00B0Sem\u00EAstre\\Chalenge\\.DotNET\\MAVIDI-SMILE\\MAVIDI-SMILE\\Controllers\\ClienteController.cs",
+              "RelativeToolTip": "MAVIDI-SMILE\\Controllers\\ClienteController.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAAAYwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-08T01:47:47.334Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\mateu\\OneDrive\\\u00C1rea de Trabalho\\Faculdade\\Materias\\3\u00B0Sem\u00EAstre\\Chalenge\\.DotNET\\MAVIDI-SMILE\\MAVIDI-SMILE\\Program.cs",
+              "RelativeDocumentMoniker": "MAVIDI-SMILE\\Program.cs",
+              "ToolTip": "C:\\Users\\mateu\\OneDrive\\\u00C1rea de Trabalho\\Faculdade\\Materias\\3\u00B0Sem\u00EAstre\\Chalenge\\.DotNET\\MAVIDI-SMILE\\MAVIDI-SMILE\\Program.cs",
+              "RelativeToolTip": "MAVIDI-SMILE\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-08T01:47:41.274Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
