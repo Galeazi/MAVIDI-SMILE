@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\mateu\\OneDrive\\Área de Trabalho\\Faculdade\\Materias\\3°Semêstre\\Chalenge\\.DotNET\\MAVIDI-SMILE\\MAVIDI-SMILE\\MAVIDI-SMILE.csproj": {}
+    "C:\\Users\\mateu\\OneDrive\\Área de Trabalho\\Faculdade\\Materias\\3°Semêstre\\Chalenge\\Sprint 02\\.NET\\Sprint1\\MAVIDI-SMILE\\MAVIDI-SMILE\\MAVIDI-SMILE.csproj": {}
   },
   "projects": {
-    "C:\\Users\\mateu\\OneDrive\\Área de Trabalho\\Faculdade\\Materias\\3°Semêstre\\Chalenge\\.DotNET\\MAVIDI-SMILE\\MAVIDI-SMILE\\MAVIDI-SMILE.csproj": {
+    "C:\\Users\\mateu\\OneDrive\\Área de Trabalho\\Faculdade\\Materias\\3°Semêstre\\Chalenge\\Sprint 02\\.NET\\Sprint1\\MAVIDI-SMILE\\MAVIDI-SMILE\\MAVIDI-SMILE.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\mateu\\OneDrive\\Área de Trabalho\\Faculdade\\Materias\\3°Semêstre\\Chalenge\\.DotNET\\MAVIDI-SMILE\\MAVIDI-SMILE\\MAVIDI-SMILE.csproj",
+        "projectUniqueName": "C:\\Users\\mateu\\OneDrive\\Área de Trabalho\\Faculdade\\Materias\\3°Semêstre\\Chalenge\\Sprint 02\\.NET\\Sprint1\\MAVIDI-SMILE\\MAVIDI-SMILE\\MAVIDI-SMILE.csproj",
         "projectName": "MAVIDI-SMILE",
-        "projectPath": "C:\\Users\\mateu\\OneDrive\\Área de Trabalho\\Faculdade\\Materias\\3°Semêstre\\Chalenge\\.DotNET\\MAVIDI-SMILE\\MAVIDI-SMILE\\MAVIDI-SMILE.csproj",
+        "projectPath": "C:\\Users\\mateu\\OneDrive\\Área de Trabalho\\Faculdade\\Materias\\3°Semêstre\\Chalenge\\Sprint 02\\.NET\\Sprint1\\MAVIDI-SMILE\\MAVIDI-SMILE\\MAVIDI-SMILE.csproj",
         "packagesPath": "C:\\Users\\mateu\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\mateu\\OneDrive\\Área de Trabalho\\Faculdade\\Materias\\3°Semêstre\\Chalenge\\.DotNET\\MAVIDI-SMILE\\MAVIDI-SMILE\\obj\\",
+        "outputPath": "C:\\Users\\mateu\\OneDrive\\Área de Trabalho\\Faculdade\\Materias\\3°Semêstre\\Chalenge\\Sprint 02\\.NET\\Sprint1\\MAVIDI-SMILE\\MAVIDI-SMILE\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\mateu\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -63,6 +63,10 @@
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.8.1, )"
+            },
+            "Swashbuckle.AspNetCore.Annotations": {
+              "target": "Package",
+              "version": "[6.9.0, )"
             }
           },
           "imports": [

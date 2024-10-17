@@ -1,51 +1,67 @@
-using MAVIDI_SMILE.mavidiSmile.Application.Services;
-using MAVIDI_SMILE.mavidiSmile.Domais.Repositories;
-using MAVIDI_SMILE.mavidiSmile.Domais.Services;
-using MAVIDI_SMILE.mavidiSmile.Infrastructure.Data;
+using MAVIDI_SMILE.mavidiSmile.Domain.Interfaces;
 using MAVIDI_SMILE.mavidiSmile.Infrastructure.Repositories;
+using MAVIDI_SMILE.mavidiSmile.Application.Interfaces;
+using MAVIDI_SMILE.mavidiSmile.Application.Services;
+using MAVIDI_SMILE.mavidiSmile.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.OpenApi.Models;
+using MAVIDI_SMILE.Infrastructure.Data;
+using MAVIDI_SMILE.Application.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// LÍ a connection string do appsettings.json
+// Verifique se a string de conex√£o est√° correta.
 var connectionString = builder.Configuration.GetConnectionString("OracleConnection");
 if (string.IsNullOrEmpty(connectionString))
 {
     throw new InvalidOperationException("Connection string for Oracle Database is not configured.");
 }
 
-// Adiciona o OdontoPrevContext com a configuraÁ„o para o Oracle
-builder.Services.AddDbContext<OdontoPrevContext>(options =>
+// Configure o DbContext para usar Oracle.
+builder.Services.AddDbContext<AppData>(options =>
 {
     options.UseOracle(connectionString);
 });
 
-// Registra os serviÁos (por exemplo, repositorios, serviÁos de domÌnio etc.)
-// Isso pode ser estendido conforme a arquitetura Clean que vocÍ est· usando.
-builder.Services.AddTransient<IClienteRepository, ClienteRepository>();
-builder.Services.AddTransient<IClienteApplicationService, ClienteService>();
-// builder.Services.AddScoped<IProgressoRepository, ProgressoRepository>();
-builder.Services.AddScoped<ClienteService>();
-builder.Services.AddScoped<ProgressoService>();
+// Adiciona os reposit√≥rios e servi√ßos
 
-// Adiciona serviÁos de controllers
+// Reposit√≥rios
+builder.Services.AddScoped<IProgressoRepository, ProgressoRepository>();
+builder.Services.AddScoped<IAmigosRepository, AmigosRepository>();
+builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
+
+// Servi√ßos
+builder.Services.AddScoped<IProgressoService, ProgressoService>();
+builder.Services.AddScoped<IAmigosService, AmigosService>();
+
 builder.Services.AddControllers();
 
-// ConfiguraÁıes do Swagger
+// Configura√ß√£o do Swagger
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(c =>
+{
+    c.SwaggerDoc("v1", new OpenApiInfo
+    {
+        Title = "API Fornecedor",
+        Version = "v1",
+        Description = "API para cadastro de fornecedores"
+    });
+
+    c.EnableAnnotations();
+});
 
 var app = builder.Build();
 
-// ConfiguraÁ„o do pipeline HTTP
-if (app.Environment.IsDevelopment())
+// Configure the HTTP request pipeline.
+app.UseSwagger();
+app.UseSwaggerUI(c =>
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "API Fornecedor V1");
+    c.RoutePrefix = string.Empty; // Agora o Swagger estar√° dispon√≠vel na raiz
+});
 
+app.UseHttpsRedirection();
 app.UseAuthorization();
-
 app.MapControllers();
 
 app.Run();
