@@ -1,3 +1,4 @@
+using MAVIDI_SMILE.Application.Services;
 using MAVIDI_SMILE.mavidiSmile.Domain.Interfaces;
 using MAVIDI_SMILE.mavidiSmile.Infrastructure.Repositories;
 using MAVIDI_SMILE.mavidiSmile.Application.Interfaces;
@@ -6,7 +7,6 @@ using MAVIDI_SMILE.mavidiSmile.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using MAVIDI_SMILE.Infrastructure.Data;
-using MAVIDI_SMILE.Application.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -52,15 +52,31 @@ builder.Services.AddSwaggerGen(c =>
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+// Configuração do pipeline para desenvolvimento
+if (app.Environment.IsDevelopment())
+{
+    app.UseDeveloperExceptionPage();
+
+    // Garantir que está usando HTTP em ambiente de desenvolvimento
+    // Se precisar de HTTPS, remova esse comentário:
+    // app.UseHttpsRedirection();
+}
+else
+{
+    // Em produção, use HSTS e redirecionamento HTTPS
+    app.UseHttpsRedirection();
+    app.UseHsts();
+}
+
+// Configure o pipeline de requisições HTTP
 app.UseSwagger();
 app.UseSwaggerUI(c =>
 {
     c.SwaggerEndpoint("/swagger/v1/swagger.json", "API Fornecedor V1");
-    c.RoutePrefix = string.Empty; // Agora o Swagger estará disponível na raiz
+    // Remover ou ajustar a linha abaixo se não estiver funcionando como esperado
+    // c.RoutePrefix = "swagger"; // ou ajuste o valor de acordo com sua preferência
 });
 
-app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();
 
