@@ -1,94 +1,125 @@
 # Projeto OdontoPrev - Gamificação da Higiene Bucal
 
-## Definição do Projeto
+## Visão Geral do Projeto
 
-Este projeto visa a criação de uma aplicação gamificada para promover e incentivar a melhoria dos hábitos de higiene bucal entre os usuários da OdontoPrev. A aplicação oferece desafios diários, recompensas por progresso e uma integração social que incentiva a interação entre amigos. Utilizando a arquitetura Clean Architecture, a solução busca ser escalável, modular e de fácil manutenção.
+Este projeto, **OdontoPrev**, visa promover melhores hábitos de higiene bucal entre os usuários da OdontoPrev por meio de uma aplicação gamificada. Com desafios diários, recompensas e uma integração social robusta, a plataforma incentiva o autocuidado preventivo, visando a redução da necessidade de tratamentos corretivos e os custos associados. Baseado na **Clean Architecture**, o projeto foi desenvolvido para ser escalável, modular e de fácil manutenção.
 
 ## Objetivo do Projeto
 
-O principal objetivo do projeto é reduzir a quantidade de sinistros relacionados a tratamentos odontológicos caros, incentivando hábitos preventivos de saúde bucal. Ao transformar o autocuidado bucal em um jogo divertido e interativo, o projeto visa aumentar o engajamento dos usuários e reduzir os custos com tratamentos corretivos, promovendo uma melhoria geral na saúde bucal dos clientes da OdontoPrev.
+O principal objetivo é melhorar a saúde bucal dos usuários, incentivando a prevenção. A gamificação transforma o autocuidado em uma atividade divertida, criando uma comunidade de usuários engajados e ajudando a reduzir sinistros odontológicos.
 
-## Escopo
+## Funcionalidades Principais
 
-O projeto inclui o desenvolvimento de uma aplicação mobile que terá as seguintes funcionalidades principais:
+1. **Registro de Progresso**: Registros diários da rotina de escovação e uso de fio dental.
+2. **Desafios e Recompensas**: Incentivo ao progresso por meio de desafios e prêmios.
+3. **Integração Social**: Adição de amigos, competições e compartilhamento de progresso.
+4. **Notificações Personalizadas**: Lembretes para escovar os dentes, usar fio dental e completar desafios.
+5. **Validação de Hábitos com IA**: Uso de Machine Learning para verificar a rotina de escovação por meio de imagens enviadas.
 
-- **Registro de Progresso**: Os usuários poderão registrar sua rotina de escovação e uso de fio dental diariamente.
-- **Desafios e Recompensas**: Os usuários serão incentivados com desafios diários e prêmios à medida que progridem em suas rotinas de higiene.
-- **Integração Social**: Os usuários poderão adicionar amigos, competir em rankings e compartilhar seu progresso.
-- **Notificações Personalizadas**: O sistema enviará notificações para lembrar os usuários de escovar os dentes, usar fio dental e completar desafios.
-- **Validação de Hábitos com IA**: Utilização de Machine Learning para validar a rotina de escovação com base em imagens fornecidas pelos usuários.
+## Implementações Recentes
+
+### Camada Web (ASP.NET Core)
+
+A camada web foi desenvolvida para oferecer uma interface intuitiva, com páginas dinâmicas e organização MVC (Model-View-Controller). As implementações incluem:
+
+#### Views e Layouts
+
+- **Rotas Padrão**: Configuração das rotas padrão com `MapControllerRoute`, facilitando a navegação nas principais páginas da aplicação.
+- **Rotas Personalizadas**: Implementação de rotas específicas para páginas como `Amigos`, permitindo acesso direto e rápido a funcionalidades específicas.
+- **Layout Principal Customizado**: Desenvolvimento de cabeçalho, rodapé e navegação com **Bootstrap**, proporcionando uma experiência visual consistente e amigável.
+- **Views com Validações**: Criação de views dedicadas para cada funcionalidade, com validações aplicadas nas `ViewModels`, garantindo a precisão dos dados exibidos e recebidos.
+- **ViewModels para Transferência de Dados**: Criação de `ViewModels` específicos, facilitando a interação entre a camada de apresentação e a lógica de negócios e oferecendo uma camada adicional de segurança e validação.
+
+#### Controllers
+
+- **CRUD Completo**: Implementação de controladores para gerenciar todas as operações CRUD (Create, Read, Update, Delete) das principais funcionalidades. Os controladores manipulam as requisições HTTP, aplicando boas práticas de validação de dados e estrutura MVC, garantindo um fluxo de dados seguro e eficiente entre o front-end e o back-end.
+- **Boas Práticas de Desenvolvimento**: A arquitetura do controlador foi baseada em boas práticas do ASP.NET Core, utilizando injeção de dependência, padrões de projeto e validações de modelo (`ModelState.IsValid`).
 
 ## Requisitos Funcionais e Não Funcionais
 
 ### Requisitos Funcionais
-1. O usuário deve poder se registrar e autenticar no sistema.
-2. O sistema deve permitir ao usuário registrar sua rotina de higiene bucal.
-3. O usuário deve receber prêmios ao atingir metas e completar desafios.
-4. O sistema deve enviar notificações sobre hábitos diários.
-5. Os usuários devem poder adicionar amigos e acompanhar o progresso dos mesmos.
-6. A aplicação deve validar as imagens enviadas para conferir a execução correta dos hábitos de higiene.
-   
+
+- Registro e autenticação de usuários.
+- Registro de rotina de higiene bucal.
+- Recompensas por metas e desafios.
+- Notificações de rotina de higiene.
+- Adição de amigos e monitoramento de progresso.
+- Validação de imagens enviadas para confirmar a prática correta de higiene.
+
 ### Requisitos Não Funcionais
-1. A aplicação deve ser responsiva e funcionar em dispositivos móveis Android e iOS.
-2. O sistema deve ser escalável para suportar um grande número de usuários.
-3. A aplicação deve garantir a segurança dos dados do usuário.
-4. O tempo de resposta da aplicação deve ser inferior a 2 segundos em operações de rotina.
-5. A aplicação deve ser de fácil manutenção e expansão, utilizando Clean Architecture.
 
----
+- Suporte a dispositivos Android e iOS.
+- Escalabilidade para um grande número de usuários.
+- Segurança dos dados dos usuários.
+- Tempo de resposta de até 2 segundos em operações de rotina.
+- Estrutura modular e de fácil manutenção seguindo a Clean Architecture.
 
-## Desenho da Arquitetura
+## Arquitetura do Projeto
 
-### Clean Architecture
+O projeto segue os princípios da Clean Architecture, garantindo modularidade e separação de responsabilidades em camadas:
 
-Este projeto segue os princípios da Clean Architecture para garantir a separação clara de responsabilidades e manter o código desacoplado, modular e fácil de manter. A Clean Architecture divide o sistema em camadas distintas, onde cada uma delas tem uma responsabilidade única e bem definida.
+1. **Apresentação**: Interface com o usuário e integração com o front-end.
+2. **Aplicação**: Gerenciamento de regras de negócios e casos de uso.
+3. **Domínio**: Entidades e regras de negócios, incluindo lógicas de cálculo de pontos e validações.
+4. **Infraestrutura**: Acesso aos dados, comunicação com APIs e bancos de dados.
 
-### Camadas da Aplicação
+### Estrutura de Pastas
 
-#### 1. Apresentação
-
-Responsável pela interface com o usuário e pela interação com a aplicação. Nesta camada, vamos lidar com:
-
-- APIs de controle para integração com o front-end.
-- Exposição de endpoints para os serviços de autenticação, registro de progressos, desafios, e interações sociais.
-
-#### 2. Aplicação
-
-Nesta camada ficam os serviços e casos de uso da aplicação. Aqui será implementada a lógica que orquestra o comportamento do sistema. Alguns exemplos de responsabilidades desta camada:
-
-- Validação de regras de negócio antes de acessar os dados.
-- Execução dos casos de uso, como adicionar amigos, processar prêmios e desafios.
-- Integração com a camada de Domínio para aplicação das regras de negócio.
-
-#### 3. Domínio
-
-O coração da aplicação, contendo os modelos de dados e regras de negócio. Esta camada não deve depender de outras camadas, garantindo assim a inversão de dependência. As principais responsabilidades incluem:
-
-- Definir entidades, como **Cliente**, **Progresso**, **Nível**, **Prêmio** e **Amigos**.
-- Regras de negócio relacionadas à progressão de níveis, validação de prêmios, e interações sociais.
-- Lógica para cálculo de pontos e validação de metas.
-
-#### 4. Infraestrutura
-
-Esta camada é responsável pelo acesso aos dados e pela comunicação com sistemas externos, como APIs e bancos de dados. Suas principais responsabilidades incluem:
-
-- Implementação dos repositórios para acesso aos dados de clientes, progressos e prêmios.
-- Integração com serviços externos, como APIs para notificação push e validação de imagens através de IA.
-- Persistência de dados e comunicação com bancos de dados relacionais ou não relacionais.
-
----
-
-## Estrutura Inicial do Projeto
-
-plaintext
+```plaintext
 /Projeto-OdontoPrev
-  ├── /Apresentacao
-  │     └── Controllers/
-  ├── /Aplicacao
-  │     └── Services/
-  ├── /Dominio
-  │     └── Entities/
-  │     └── RegrasDeNegocio/
-  ├── /Infraestrutura
-        └── Repositories/
-        └── Integrations/
+├── /Apresentacao
+│   └── Controllers/
+├── /Aplicacao
+│   └── Services/
+├── /Dominio
+│   └── Entities/
+│   └── RegrasDeNegocio/
+├── /Infraestrutura
+└── Repositories/
+└── Integrations/
+```
+
+## Instruções de Instalação e Configuração
+
+### Pré-requisitos
+
+- .NET 6.0 ou superior
+- Banco de dados Oracle
+- Rider, Visual Studio ou IDE compatível
+
+### Configuração
+
+1. **Clone o Repositório**
+   ```bash
+   git clone https://github.com/usuario/Projeto-OdontoPrev.git
+   cd Projeto-OdontoPrev
+   ```
+
+2. **Configure a Conexão com o Banco de Dados**
+
+   Atualize a `connectionString` para o banco de dados Oracle em `appsettings.json`:
+   ```json
+   {
+     "ConnectionStrings": {
+       "OracleConnection": "Data Source=<servidor>;User Id=<usuario>;Password=<senha>;"
+     }
+   }
+   ```
+
+3. **Restaure Dependências e Compile**
+   ```bash
+   dotnet restore
+   dotnet build
+   ```
+
+4. **Execute as Migrações do Banco de Dados**
+   ```bash
+   dotnet ef database update
+   ```
+
+5. **Inicie a Aplicação**
+   ```bash
+   dotnet run
+   ```
+
+A aplicação estará disponível em `http://localhost:5000`, com a documentação Swagger acessível em `http://localhost:5000/swagger`.
