@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MAVIDI-SMILE")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+77f1c787736ff029251d3f607fbfec5139eebfb4")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6d409533e756432ec8f4d525c8e25b161fbff5e4")]
 [assembly: System.Reflection.AssemblyProductAttribute("MAVIDI-SMILE")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MAVIDI-SMILE")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

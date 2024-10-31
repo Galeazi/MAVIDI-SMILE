@@ -225,3 +225,5 @@ C:\Users\mateu\OneDrive\Área de Trabalho\Faculdade\Materias\3°Semêstre\Chalen
 C:\Users\mateu\OneDrive\Área de Trabalho\Faculdade\Materias\3°Semêstre\Chalenge\Sprint 02\.NET\Sprint1\MAVIDI-SMILE\MAVIDI-SMILE\obj\Debug\net8.0\MAVIDI-S.463959E4.Up2Date
 C:\Users\mateu\OneDrive\Área de Trabalho\Faculdade\Materias\3°Semêstre\Chalenge\Sprint 02\.NET\Sprint1\MAVIDI-SMILE\MAVIDI-SMILE\obj\Debug\net8.0\MAVIDI-SMILE.genruntimeconfig.cache
 C:\Users\mateu\OneDrive\Área de Trabalho\Faculdade\Materias\3°Semêstre\Chalenge\Sprint 02\.NET\Sprint1\MAVIDI-SMILE\MAVIDI-SMILE\obj\Debug\net8.0\ref\MAVIDI-SMILE.dll
+C:\Users\mateu\OneDrive\Área de Trabalho\Faculdade\Materias\3°Semêstre\Chalenge\Sprint 02\.NET\Sprint1\MAVIDI-SMILE\MAVIDI-SMILE\obj\Debug\net8.0\MAVIDI-SMILE.RazorAssemblyInfo.cache
+C:\Users\mateu\OneDrive\Área de Trabalho\Faculdade\Materias\3°Semêstre\Chalenge\Sprint 02\.NET\Sprint1\MAVIDI-SMILE\MAVIDI-SMILE\obj\Debug\net8.0\MAVIDI-SMILE.RazorAssemblyInfo.cs

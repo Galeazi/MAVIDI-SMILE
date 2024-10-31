@@ -1,15 +1,12 @@
 ﻿using MAVIDI_SMILE.mavidiSmile.Application.Interfaces;
-using MAVIDI_SMILE.mavidiSmile.Application.DTOs;
-using Microsoft.AspNetCore.Mvc;
-using System.Net;
-using Swashbuckle.AspNetCore.Annotations;
+using MAVIDI_SMILE.ViewModels;
 using MAVIDI_SMILE.Domain.Entities;
+using MAVIDI_SMILE.mavidiSmile.Domain.Entities;
+using Microsoft.AspNetCore.Mvc;
 
 namespace MAVIDI_SMILE.mavidiSmile.Presentation.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class AmigosController : ControllerBase
+    public class AmigosController : Controller
     {
         private readonly IAmigosService _amigosService;
 
@@ -18,73 +15,113 @@ namespace MAVIDI_SMILE.mavidiSmile.Presentation.Controllers
             _amigosService = amigosService;
         }
 
-        [HttpGet("{usuarioId}")]
-        [SwaggerOperation(Summary = "Lista todos os amigos de um usuário", Description = "Este endpoint retorna todos os amigos de um usuário específico.")]
-        [Produces(typeof(IEnumerable<Amigo>))]
-        public IActionResult GetAmigosPorUsuario(int usuarioId)
+        // GET: /Amigos
+        public IActionResult Index()
         {
-            var amigos = _amigosService.ObterAmizadesPorUsuarioId(usuarioId);
+            var amigos = _amigosService.ObterTodos();
+            var viewModel = amigos.Select(a => new AmigoViewModel
+            {
+                Id = a.Id,
+                Nome = a.Usuario.Nome, // Assumindo que Usuario tem Nome
+                Email = a.Usuario.Email
+            }).ToList();
 
-            if (amigos != null)
-                return Ok(amigos);
-
-            return NotFound("Nenhum amigo encontrado para o usuário especificado.");
+            return View(viewModel);
         }
 
+        // GET: /Amigos/Criar
+        public IActionResult Criar()
+        {
+            return View();
+        }
+
+        // POST: /Amigos/Criar
         [HttpPost]
-        [SwaggerOperation(Summary = "Adicionar amigo", Description = "Este endpoint permite adicionar um novo amigo para o usuário.")]
-        [Produces(typeof(Amigo))]
-        public IActionResult AdicionarAmigo([FromBody] AmigosDTO amigoDto)
+        [ValidateAntiForgeryToken]
+        public IActionResult Criar(AmigoViewModel model)
         {
-            try
+            if (ModelState.IsValid)
             {
-                var amigo = _amigosService.AdicionarAmigo(amigoDto);
-
-                if (amigo != null)
-                    return Ok(amigo);
-
-                return BadRequest("Não foi possível adicionar o amigo.");
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(new
+                var amigo = new Amigo
                 {
-                    Error = ex.Message,
-                    Status = HttpStatusCode.BadRequest
-                });
+                    Usuario = new Usuario
+                    {
+                        Nome = model.Nome,
+                        Email = model.Email
+                    },
+                    AmigoUsuario = null
+                };
+
+                _amigosService.Adicionar(amigo);
+                return RedirectToAction(nameof(Index));
             }
+
+            return View(model);
         }
 
-        [HttpPut("{id}")]
-        [SwaggerOperation(Summary = "Atualizar amizade", Description = "Este endpoint permite atualizar um relacionamento de amizade.")]
-        [Produces(typeof(Amigo))]
-        public IActionResult AtualizarAmigo(int id, [FromBody] AmigosDTO amigoDto)
+        // GET: /Amigos/Editar/{id}
+        public IActionResult Editar(int id)
         {
-            try
+            var amigo = _amigosService.ObterPorId(id);
+            if (amigo == null)
             {
-                var amigoAtualizado = _amigosService.AtualizarAmizade(id, amigoDto);
-
-                if (amigoAtualizado != null)
-                    return Ok(amigoAtualizado);
-
-                return BadRequest("Não foi possível atualizar a amizade.");
+                return NotFound();
             }
-            catch (Exception ex)
+
+            var viewModel = new AmigoViewModel
             {
-                return BadRequest(new
-                {
-                    Error = ex.Message,
-                    Status = HttpStatusCode.BadRequest
-                });
-            }
+                Id = amigo.Id,
+                Nome = amigo.Usuario?.Nome ?? "Nome não disponível",
+                Email = amigo.Usuario?.Email ?? "Email não disponível"
+            };
+
+            return View(viewModel);
         }
 
-        [HttpDelete("{id}")]
-        [SwaggerOperation(Summary = "Remover amigo", Description = "Este endpoint permite remover um amigo do usuário.")]
-        public IActionResult RemoverAmigo(int id)
+        // POST: /Amigos/Editar/{id}
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Editar(int id, AmigoViewModel model)
         {
-            _amigosService.RemoverAmigo(id);
-            return NoContent();
+            if (ModelState.IsValid)
+            {
+                var amigo = new Amigo
+                {
+                    Id = model.Id,
+                    Usuario = new Usuario
+                    {
+                        Nome = model.Nome,
+                        Email = model.Email
+                    },
+                    AmigoUsuario = null
+                };
+
+                _amigosService.Atualizar(amigo);
+                return RedirectToAction(nameof(Index));
+            }
+
+            return View(model);
+        }
+
+        // GET: /Amigos/Deletar/{id}
+        public IActionResult Deletar(int id)
+        {
+            var amigo = _amigosService.ObterPorId(id);
+            if (amigo == null)
+            {
+                return NotFound();
+            }
+
+            return View(amigo);
+        }
+
+        // POST: /Amigos/Deletar/{id}
+        [HttpPost, ActionName("Deletar")]
+        [ValidateAntiForgeryToken]
+        public IActionResult DeletarConfirmado(int id)
+        {
+            _amigosService.Remover(id);
+            return RedirectToAction(nameof(Index));
         }
     }
 }

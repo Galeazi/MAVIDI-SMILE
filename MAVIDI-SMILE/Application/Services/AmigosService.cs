@@ -1,19 +1,44 @@
 ﻿using MAVIDI_SMILE.Domain.Entities;
 using MAVIDI_SMILE.mavidiSmile.Application.DTOs;
 using MAVIDI_SMILE.mavidiSmile.Application.Interfaces;
-using MAVIDI_SMILE.mavidiSmile.Domain.Entities;
 using MAVIDI_SMILE.mavidiSmile.Domain.Interfaces;
-
+using System.Collections.Generic;
+using MAVIDI_SMILE.mavidiSmile.Domain.Entities;
 
 namespace MAVIDI_SMILE.Application.Services
 {
-    public class AmigosService(IAmigosRepository repository) : IAmigosService
+    public class AmigosService : IAmigosService
     {
-        private readonly IAmigosRepository _repository = repository;
+        private readonly IAmigosRepository _repository;
 
-        public Amigo? ObterAmizadePorId(int id)
+        public AmigosService(IAmigosRepository repository)
+        {
+            _repository = repository;
+        }
+
+        public Amigo? ObterPorId(int id)
         {
             return _repository.ObterAmizadePorId(id);
+        }
+
+        public IEnumerable<Amigo> ObterTodos()
+        {
+            return _repository.ObterAmizades();
+        }
+
+        public void Adicionar(Amigo amigo)
+        {
+            _repository.AdicionarAmigo(amigo);
+        }
+
+        public void Atualizar(Amigo amigo)
+        {
+            _repository.AtualizarAmizade(amigo.Id, amigo);
+        }
+
+        public void Remover(int id)
+        {
+            _repository.RemoverAmigo(id);
         }
 
         public IEnumerable<Amigo> ObterAmizadesPorUsuarioId(int usuarioId)
@@ -27,14 +52,12 @@ namespace MAVIDI_SMILE.Application.Services
             {
                 UsuarioId = amigoDto.UsuarioId,
                 AmigoId = amigoDto.AmigoId,
-
                 Usuario = new Usuario { Id = amigoDto.UsuarioId },
                 AmigoUsuario = new Usuario { Id = amigoDto.AmigoId }
             };
             _repository.AdicionarAmigo(amigo);
             return amigo;
         }
-
 
         public Amigo AtualizarAmizade(int id, AmigosDTO amigoDto)
         {
@@ -46,11 +69,6 @@ namespace MAVIDI_SMILE.Application.Services
                 _repository.AtualizarAmizade(id, amigo);
             }
             return amigo;
-        }
-
-        public void RemoverAmigo(int id)
-        {
-            _repository.RemoverAmigo(id);
         }
     }
 }

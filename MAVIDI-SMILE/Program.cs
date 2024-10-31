@@ -56,28 +56,39 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.UseDeveloperExceptionPage();
-
-    // Garantir que está usando HTTP em ambiente de desenvolvimento
-    // Se precisar de HTTPS, remova esse comentário:
-    // app.UseHttpsRedirection();
 }
 else
 {
-    // Em produção, use HSTS e redirecionamento HTTPS
     app.UseHttpsRedirection();
     app.UseHsts();
 }
 
-// Configure o pipeline de requisições HTTP
+// Adicione o roteamento antes de autorizações e mapeamento de controladores
+app.UseRouting(); // Importante para resolver o erro
+
+// Configuração do Swagger
 app.UseSwagger();
 app.UseSwaggerUI(c =>
 {
     c.SwaggerEndpoint("/swagger/v1/swagger.json", "API Fornecedor V1");
-    // Remover ou ajustar a linha abaixo se não estiver funcionando como esperado
-    // c.RoutePrefix = "swagger"; // ou ajuste o valor de acordo com sua preferência
 });
 
 app.UseAuthorization();
-app.MapControllers();
 
+// Configuração de rotas e endpoints
+app.UseEndpoints(endpoints =>
+{
+    // Rota padrão
+    endpoints.MapControllerRoute(
+        name: "default",
+        pattern: "{controller=Home}/{action=Index}/{id?}");
+
+    // Rota personalizada para o controlador Amigos
+    endpoints.MapControllerRoute(
+        name: "amigos",
+        pattern: "Amigos/{action=Index}/{id?}",
+        defaults: new { controller = "Amigos" });
+});
+
+// Executar a aplicação
 app.Run();

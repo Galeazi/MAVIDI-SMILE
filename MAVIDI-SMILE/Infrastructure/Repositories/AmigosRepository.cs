@@ -1,5 +1,4 @@
-﻿
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using MAVIDI_SMILE.Domain.Entities;
 using MAVIDI_SMILE.Infrastructure.Data;
@@ -22,6 +21,12 @@ namespace MAVIDI_SMILE.mavidiSmile.Infrastructure.Repositories
             return _context.Amigos.FirstOrDefault(a => a.Id == id);
         }
 
+        // Implementação do método para obter todas as amizades
+        public IEnumerable<Amigo> ObterAmizades()
+        {
+            return _context.Amigos.ToList();
+        }
+
         // Implementação do método para obter todas as amizades de um usuário pelo ID do usuário
         public IEnumerable<Amigo> ObterAmizadesPorUsuarioId(int usuarioId)
         {
@@ -29,15 +34,14 @@ namespace MAVIDI_SMILE.mavidiSmile.Infrastructure.Repositories
         }
 
         // Implementação do método para adicionar uma nova amizade
-        public Amigo AdicionarAmigo(Amigo amigo)
+        public void AdicionarAmigo(Amigo amigo)
         {
             _context.Amigos.Add(amigo);
             _context.SaveChanges();
-            return amigo;
         }
 
         // Implementação do método para atualizar uma amizade existente
-        public Amigo AtualizarAmizade(int id, Amigo amigoAtualizado)
+        public void AtualizarAmizade(int id, Amigo amigoAtualizado)
         {
             var amigoExistente = _context.Amigos.FirstOrDefault(a => a.Id == id);
             if (amigoExistente != null)
@@ -48,7 +52,6 @@ namespace MAVIDI_SMILE.mavidiSmile.Infrastructure.Repositories
                 _context.Amigos.Update(amigoExistente);
                 _context.SaveChanges();
             }
-            return amigoExistente;
         }
 
         // Implementação do método para remover uma amizade
